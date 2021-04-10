@@ -1,8 +1,6 @@
-FROM node:12.20.2-alpine
+FROM node:lts-slim
 
-LABEL maintainer="Ryo Ota <nwtgck@nwtgck.org>"
-
-RUN apk add --no-cache tini
+LABEL maintainer="Kamil (sp9usb) Mysliwiec <sp9usb@gmail.cm>"
 
 COPY . /app
 
@@ -17,4 +15,4 @@ RUN npm ci && \
     npm cache clean --force
 
 # Run a server
-ENTRYPOINT [ "tini", "--", "node", "dist/src/index.js" ]
+ENTRYPOINT [ "node", "dist/src/index.js" ]
